@@ -1,0 +1,141 @@
+<?xml version="1.0"?>
+
+<ruleset name="SirsiDynix PMD Rules">
+    <description>
+        SirsiDynix PMD Rules.
+    </description>
+
+    <rule ref="rulesets/java/basic.xml"/>
+    <rule ref="rulesets/java/unnecessary.xml/UselessOverridingMethod">
+        <priority>2</priority>
+    </rule>
+    <rule ref="rulesets/java/basic.xml/AvoidDecimalLiteralsInBigDecimalConstructor">
+        <priority>1</priority>
+    </rule>
+    <rule ref="rulesets/java/unnecessary.xml/UselessOperationOnImmutable">
+        <priority>1</priority>
+    </rule>
+    <rule ref="rulesets/java/empty.xml/EmptyWhileStmt">
+        <priority>2</priority>
+    </rule>
+    <rule ref="rulesets/java/basic.xml/OverrideBothEqualsAndHashcode">
+        <priority>1</priority>
+    </rule>
+    <rule ref="rulesets/java/basic.xml/ReturnFromFinallyBlock">
+        <priority>1</priority>
+    </rule>
+    <rule ref="rulesets/java/unnecessary.xml/UnusedNullCheckInEquals">
+        <priority>2</priority>
+    </rule>
+    <rule ref="rulesets/java/basic.xml/ForLoopShouldBeWhileLoop">
+        <priority>2</priority>
+    </rule>
+    <rule ref="rulesets/java/empty.xml/EmptyTryBlock">
+        <priority>2</priority>
+    </rule>
+    <rule ref="rulesets/java/empty.xml/EmptyFinallyBlock">
+        <priority>2</priority>
+    </rule>
+
+    <rule ref="rulesets/java/braces.xml">
+        <exclude name="IfStmtsMustUseBraces"/>
+        <exclude name="IfElseStmtsMustUseBraces"/>
+        <exclude name="ForLoopsMustUseBraces"/>
+        <exclude name="WhileLoopsMustUseBraces"/>
+    </rule>
+
+    <!--   <rule ref="rulesets/clone.xml"/> -->
+    <rule ref="rulesets/java/codesize.xml">
+        <exclude name="ExcessiveClassLength"/>
+        <exclude name="TooManyMethods"/>
+        <exclude name="NPathComplexity"/>
+        <exclude name="NcssMethodCount"/>
+        <exclude name="NcssTypeCount"/>
+        <exclude name="NcssConstructorCount"/>
+    </rule>
+
+    <!--   <rule ref="rulesets/controversial.xml"> -->
+    <!--     <exclude name="NullAssignment"/> -->
+    <!--     <exclude name="OnlyOneReturn"/> -->
+    <!--     <exclude name="AtLeastOneConstructor"/> -->
+    <!--   </rule> -->
+
+    <rule ref="rulesets/java/coupling.xml">
+        <exlude name="ExcessiveImports"/>
+        <exclude name="LoosePackageCoupling" />
+        <exclude name="LawOfDemeter"/>
+    </rule>
+    <!--   <rule ref="rulesets/design.xml"> -->
+    <!--     <exclude name="ConfusingTernary"/> -->
+    <!--     <exclude name="AvoidReassigningParameters"/> -->
+    <!--   </rule> -->
+
+    <rule ref="rulesets/java/finalizers.xml"/>
+    <rule ref="rulesets/java/imports.xml"/>
+    <!--   <rule ref="rulesets/javabeans.xml"> -->
+    <!--     <exclude name="BeanMembersShouldSerialize"/> -->
+    <!--   </rule> -->
+    <!--   <rule ref="rulesets/junit.xml"/> -->
+    <!--   <rule ref="rulesets/logging-java.xml"> -->
+    <!--     <exclude name="SystemPrintln"/> -->
+    <!--   </rule> -->
+    <!--   <rule ref="rulesets/naming.xml"> -->
+    <!--     <exclude name="ShortVariable"/> -->
+    <!--     <exclude name="LongVariable"/> -->
+    <!--     <exclude name="AbstractNaming"/> -->
+    <!--     <exclude name="AvoidDollarSigns"/> -->
+    <!--     <exclude name="MethodWithSameNameAsEnclosingClass"/> -->
+    <!--   </rule> -->
+    <!--   <rule ref="rulesets/optimizations.xml"> -->
+    <!--     <exclude name="LocalVariableCouldBeFinal"/> -->
+    <!--     <exclude name="MethodArgumentCouldBeFinal"/> -->
+    <!--     <exclude name="AvoidInstantiatingObjectsInLoops"/> -->
+    <!--   </rule> -->
+    <!--   <rule ref="rulesets/strictexception.xml"> -->
+    <!--     <exclude name="AvoidThrowingCertainExceptionTypes"/> -->
+    <!--   </rule> -->
+    <!--rule ref="rulesets/strings.xml"/-->
+    <rule ref="rulesets/java/strings.xml/AvoidDuplicateLiterals"/>
+    <rule ref="rulesets/java/strings.xml/StringInstantiation"/>
+    <rule ref="rulesets/java/strings.xml/StringToString">
+        <priority>2</priority>
+    </rule>
+    <rule ref="rulesets/java/strings.xml/InefficientEmptyStringCheck">
+        <priority>2</priority>
+    </rule>
+    <rule ref="rulesets/java/strings.xml/UnnecessaryCaseChange">
+        <priority>2</priority>
+    </rule>
+    <rule ref="rulesets/java/strings.xml/UseStringBufferLength"/>
+    <rule ref="rulesets/java/strings.xml/AppendCharacterWithChar">
+        <priority>2</priority>
+    </rule>
+    <!--rule ref="rulesets/strings.xml/ConsecutiveLiteralAppends">
+      <priority>2</priority>
+    </rule-->
+    <rule ref="rulesets/java/strings.xml/UseIndexOfChar">
+        <priority>2</priority>
+    </rule>
+    <rule ref="rulesets/java/strings.xml/InefficientEmptyStringCheck"/>
+    <rule ref="rulesets/java/strings.xml/InsufficientStringBufferDeclaration"/>
+    <rule ref="rulesets/java/strings.xml/UselessStringValueOf">
+        <priority>2</priority>
+    </rule>
+    <!--rule ref="rulesets/strings.xml/InefficientStringBuffering">
+      <priority>2</priority>
+    </rule-->
+
+    <rule ref="rulesets/java/sunsecure.xml"/>
+
+    <!--rule ref="rulesets/unusedcode.xml"/-->
+    <rule ref="rulesets/java/unusedcode.xml/UnusedFormalParameter">
+        <priority>4</priority>
+    </rule>
+
+    <rule ref="rulesets/java/unusedcode.xml/UnusedPrivateField">
+        <priority>4</priority>
+    </rule>
+    <rule ref="rulesets/java/unusedcode.xml/UnusedPrivateMethod">
+        <priority>2</priority>
+    </rule>
+</ruleset>

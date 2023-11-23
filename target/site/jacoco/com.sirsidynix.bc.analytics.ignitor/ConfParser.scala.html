@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ConfParser.scala</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Spark::Ignitor</a> &gt; <a href="index.source.html" class="el_package">com.sirsidynix.bc.analytics.ignitor</a> &gt; <span class="el_source">ConfParser.scala</span></div><h1>ConfParser.scala</h1><pre class="source lang-java linenums">/*
+* Copyright 2018 Sirsi Corporation. All rights reserved.
+*/
+package com.sirsidynix.bc.analytics.ignitor
+
+import org.apache.hadoop.conf.Configuration
+import org.apache.hadoop.fs.Path
+
+import scala.xml.Elem
+import scalaj.http.{Http, HttpOptions}
+
+<span class="fc" id="L12">object ConfParser {</span>
+<span class="pc" id="L13">  val READ_TIMEOUT = 10000;</span>
+<span class="pc" id="L14">  val CONN_TIMEOUT = 15000;</span>
+
+  def getHadoopConfFromLocalXml(resources: Seq[String]): Configuration = {
+<span class="nc" id="L17">    val conf = new Configuration()</span>
+<span class="nc" id="L18">    resources.foreach(r =&gt; conf.addResource(new Path(r)))</span>
+<span class="nc" id="L19">    conf</span>
+  }
+
+  def fetchHadoopConf(url: String): Configuration = {
+<span class="nc" id="L23">    convertToHadoopConf(fetchConfMap(url))</span>
+  }
+
+  def fetchConfMap(url: String): Map[String, String] = {
+<span class="nc" id="L27">    parseConfXmlToMap(Http.get(url).options(HttpOptions.readTimeout(READ_TIMEOUT), HttpOptions.connTimeout(CONN_TIMEOUT))</span>
+<span class="nc" id="L28">      .asXml)</span>
+  }
+
+  def parseConfXmlToMap(xml: Elem): Map[String, String] = {
+<span class="fc" id="L32">    xml \ &quot;property&quot; map (node =&gt; (node \ &quot;name&quot; text, node \ &quot;value&quot; text)) toMap</span>
+  }
+
+  def convertToHadoopConf(map: Map[String, String]): Configuration = {
+<span class="fc" id="L36">    val conf = new Configuration()</span>
+<span class="fc" id="L37">    map.foreach(e =&gt; {</span>
+<span class="fc" id="L38">      conf.set(e._1, e._2)</span>
+    })
+<span class="fc" id="L40">    conf</span>
+  }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

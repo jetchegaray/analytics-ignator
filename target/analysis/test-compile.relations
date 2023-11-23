@@ -1,0 +1,28 @@
+products:
+   src/test/scala/com/sirsidynix/bc/analytics/ignitor/ConfParserSpec.scala -> target/test-classes/com/sirsidynix/bc/analytics/ignitor/ConfParserSpec$$anonfun$1.class
+   src/test/scala/com/sirsidynix/bc/analytics/ignitor/ConfParserSpec.scala -> target/test-classes/com/sirsidynix/bc/analytics/ignitor/ConfParserSpec$$anonfun$2.class
+   src/test/scala/com/sirsidynix/bc/analytics/ignitor/ConfParserSpec.scala -> target/test-classes/com/sirsidynix/bc/analytics/ignitor/ConfParserSpec.class
+   src/test/scala/com/sirsidynix/bc/analytics/ignitor/IgniteSpec.scala -> target/test-classes/com/sirsidynix/bc/analytics/ignitor/IgniteSpec.class
+   src/test/scala/com/sirsidynix/bc/analytics/ignitor/UnitSpec.scala -> target/test-classes/com/sirsidynix/bc/analytics/ignitor/UnitSpec.class
+binary dependencies:
+   src/test/scala/com/sirsidynix/bc/analytics/ignitor/ConfParserSpec.scala -> /home/javier/.m2/repository/org/apache/hadoop/hadoop-common/2.5.0-cdh5.2.0/hadoop-common-2.5.0-cdh5.2.0.jar
+   src/test/scala/com/sirsidynix/bc/analytics/ignitor/ConfParserSpec.scala -> /home/javier/.m2/repository/org/scala-lang/scala-library/2.10.4/scala-library-2.10.4.jar
+   src/test/scala/com/sirsidynix/bc/analytics/ignitor/ConfParserSpec.scala -> /home/javier/.m2/repository/org/scalatest/scalatest_2.10/2.2.2/scalatest_2.10-2.2.2.jar
+   src/test/scala/com/sirsidynix/bc/analytics/ignitor/ConfParserSpec.scala -> /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar
+   src/test/scala/com/sirsidynix/bc/analytics/ignitor/IgniteSpec.scala -> /home/javier/.m2/repository/org/scala-lang/scala-library/2.10.4/scala-library-2.10.4.jar
+   src/test/scala/com/sirsidynix/bc/analytics/ignitor/IgniteSpec.scala -> /home/javier/.m2/repository/org/scalatest/scalatest_2.10/2.2.2/scalatest_2.10-2.2.2.jar
+   src/test/scala/com/sirsidynix/bc/analytics/ignitor/IgniteSpec.scala -> /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar
+   src/test/scala/com/sirsidynix/bc/analytics/ignitor/UnitSpec.scala -> /home/javier/.m2/repository/org/scala-lang/scala-library/2.10.4/scala-library-2.10.4.jar
+   src/test/scala/com/sirsidynix/bc/analytics/ignitor/UnitSpec.scala -> /home/javier/.m2/repository/org/scalatest/scalatest_2.10/2.2.2/scalatest_2.10-2.2.2.jar
+   src/test/scala/com/sirsidynix/bc/analytics/ignitor/UnitSpec.scala -> /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar
+source dependencies:
+   src/test/scala/com/sirsidynix/bc/analytics/ignitor/ConfParserSpec.scala -> src/test/scala/com/sirsidynix/bc/analytics/ignitor/UnitSpec.scala
+   src/test/scala/com/sirsidynix/bc/analytics/ignitor/IgniteSpec.scala -> src/test/scala/com/sirsidynix/bc/analytics/ignitor/UnitSpec.scala
+external dependencies:
+   src/test/scala/com/sirsidynix/bc/analytics/ignitor/ConfParserSpec.scala -> com.sirsidynix.bc.analytics.ignitor.ConfParser$
+class names:
+   src/test/scala/com/sirsidynix/bc/analytics/ignitor/ConfParserSpec.scala -> com.sirsidynix.bc.analytics.ignitor.ConfParserSpec
+   src/test/scala/com/sirsidynix/bc/analytics/ignitor/ConfParserSpec.scala -> com.sirsidynix.bc.analytics.ignitor.ConfParserSpec$$anonfun$1
+   src/test/scala/com/sirsidynix/bc/analytics/ignitor/ConfParserSpec.scala -> com.sirsidynix.bc.analytics.ignitor.ConfParserSpec$$anonfun$2
+   src/test/scala/com/sirsidynix/bc/analytics/ignitor/IgniteSpec.scala -> com.sirsidynix.bc.analytics.ignitor.IgniteSpec
+   src/test/scala/com/sirsidynix/bc/analytics/ignitor/UnitSpec.scala -> com.sirsidynix.bc.analytics.ignitor.UnitSpec

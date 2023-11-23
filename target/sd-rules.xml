@@ -1,0 +1,149 @@
+<?xml version="1.0"?>
+<ruleset name="Custom SirsiDynix PMD Rules">
+    <description>
+        A set of custom PMD Rules for use by SirsiDynix.
+    </description>
+
+    <rule name="SessionBeanThrowsRemoteException"
+          message="SessionBean methods must not throw RemoteException"
+          language="java"
+          class="net.sourceforge.pmd.lang.rule.XPathRule">
+        <description>
+            According to the EJB2.0 Spec, SSB SesionBean methods
+            ejb{Create,Activate,Passivate,Remote} and setSessionContext must not
+            throw RemoteException.
+        </description>
+        <properties>
+            <property name="xpath">
+                <value>
+                    <![CDATA[
+//MethodDeclaration[
+  MethodDeclarator[
+   (@Image="ejbActivate" or @Image="ejbPassivate"
+    or @Image="ejbRemove" or @Image="ejbCreate"
+    or @Image="setSessionContext")
+    and count(FormalParameters/*) = 0
+  ]
+  and
+  NameList/Name[@Image="RemoteException" or @Image="java.rmi.RemoteException"]
+]
+           ]]>
+                </value>
+            </property>
+        </properties>
+        <example>
+            <![CDATA[
+public class SSB extends SessionBean
+{
+  public void ejbRemove() throws RemoteException // out of spec
+  {
+    throw new RemoteException("this is out of spec");
+  }
+}
+      ]]>
+        </example>
+    </rule>
+
+    <rule name="SessionBeanMustHaveAtLeastOneCreateMethod"
+          message="A Session Bean must define at least one ejbCreate method."
+          language="java"
+          class="net.sourceforge.pmd.lang.rule.XPathRule">
+        <description>
+            A Session Bean must define at least one ejbCreate
+            method.  It must be marked as such with an xdoclet tag and must have
+            an unchecked permission xdoclet tag.
+        </description>
+        <properties>
+            <property name="xpath">
+                <value>
+                    <![CDATA[
+//ClassDeclaration
+  [UnmodifiedClassDeclaration/NameList/Name[@Image="SessionBean"
+                                            or @Image="javax.ejb.SessionBean"]
+   and not (//MethodDeclarator[@Image="ejbCreate"])
+  ]
+           ]]>
+                </value>
+            </property>
+        </properties>
+    </rule>
+
+    <rule name="SessionBeanCacheValuesEjbCreate"
+          message="A Session Bean should cache ejb refs in setSessionContext."
+          language="java"
+          class="net.sourceforge.pmd.lang.rule.XPathRule">
+        <description>
+        </description>
+        <properties>
+            <property name="xpath">
+                <value>
+                    <![CDATA[
+//MethodDeclaration[
+  MethodDeclarator[@Image="ejbCreate"]
+  and .//Name[substring-after(@Image, ".") = "getHome" or @Image="getHome"]
+]
+           ]]>
+                </value>
+            </property>
+        </properties>
+    </rule>
+
+    <rule name="StatelessSessionBeanImplementsUselessMethods"
+          message="An SSB should have empty bodies for ejb{Activate,Passivate}."
+          language="java"
+          class="net.sourceforge.pmd.lang.rule.XPathRule">
+        <description>
+        </description>
+        <properties>
+            <property name="xpath">
+                <value>
+                    <![CDATA[
+//ClassDeclaration
+  [UnmodifiedClassDeclaration/NameList/Name[@Image="SessionBean"
+                                            or
+          @Image="javax.ejb.SessionBean"]
+  ]//MethodDeclaration[
+    MethodDeclarator[@Image="ejbActivate" or @Image="ejbPassivate"]
+    and count(Block/*) > 0
+  ]
+           ]]>
+                </value>
+            </property>
+        </properties>
+    </rule>
+
+    <!-- rule name="AvoidCatchingException"
+          message="Avoid catching Exception."
+          language="java"
+          class="net.sourceforge.pmd.lang.rule.XPathRule">
+        <description>
+        </description>
+        <properties>
+            <property name="xpath">
+                <value>
+                    <![CDATA[
+//TryStatement[@Catch='true'][FormalParameter/Type/Name[@Image = 'Exception']]
+           ]]>
+                </value>
+            </property>
+        </properties>
+    </rule-->
+
+    <rule name="Avoid throwing EJBException"
+          message="Avoid throwing EJBException."
+          language="java"
+          class="net.sourceforge.pmd.lang.rule.XPathRule">
+        <description>
+        </description>
+        <properties>
+            <property name="xpath">
+                <value>
+                    <![CDATA[
+//AllocationExpression/Name[@Image='EJBException'
+                            or @Image='javax.ejb.EJBException']
+           ]]>
+                </value>
+            </property>
+        </properties>
+    </rule>
+</ruleset>

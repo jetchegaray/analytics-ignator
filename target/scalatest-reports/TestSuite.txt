@@ -1,0 +1,14 @@
+Discovery starting.
+Discovery completed in 409 milliseconds.
+Run starting. Expected test count is: 2
+ConfParserSpec:
+parseConfXmlToMap
+- should return a map of size two, and accessible with key 'key1' (44 milliseconds)
+fillHadoopConfig
+- should return a hadoop conf with access into at least key1 and key2 (220 milliseconds)
+IgniteSpec:
+Run completed in 974 milliseconds.
+Total number of tests run: 2
+Suites: completed 3, aborted 0
+Tests: succeeded 2, failed 0, canceled 0, ignored 0, pending 0
+All tests passed.

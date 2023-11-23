@@ -1,0 +1,12 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+Spark::Ignitor,com.sirsidynix.bc.analytics.ignitor,Options,323,0,59,0,9,0,61,0,28,0
+Spark::Ignitor,com.sirsidynix.bc.analytics.ignitor,Ignite..anonfun.killThemAll.new Serializable() {...},19,0,2,0,1,0,3,0,2,0
+Spark::Ignitor,com.sirsidynix.bc.analytics.ignitor,ConfParser..anonfun.parseConfXmlToMap.new Serializable() {...},0,15,0,0,0,1,0,2,0,2
+Spark::Ignitor,com.sirsidynix.bc.analytics.ignitor,Ignite,697,0,4,0,47,0,9,0,7,0
+Spark::Ignitor,com.sirsidynix.bc.analytics.ignitor,ConfParser..anonfun.getHadoopConfFromLocalXml.new Serializable() {...},14,0,0,0,1,0,2,0,2,0
+Spark::Ignitor,com.sirsidynix.bc.analytics.ignitor,ConfParser..anonfun.convertToHadoopConf.new Serializable() {...},0,16,0,0,0,2,0,2,0,2
+Spark::Ignitor,com.sirsidynix.bc.analytics.ignitor,ConfParser.,51,40,0,0,6,7,5,4,5,4
+Spark::Ignitor,com.sirsidynix.bc.analytics.ignitor,Options.,53,0,2,0,1,0,7,0,6,0
+Spark::Ignitor,com.sirsidynix.bc.analytics.ignitor,Ignite..anonfun.new Serializable() {...},11,0,2,0,1,0,3,0,2,0
+Spark::Ignitor,com.sirsidynix.bc.analytics.ignitor,ConfParser,26,0,0,0,0,0,7,0,7,0
+Spark::Ignitor,com.sirsidynix.bc.analytics.ignitor,Ignite..anonfun.new Serializable() {...},46,0,18,0,2,0,11,0,2,0

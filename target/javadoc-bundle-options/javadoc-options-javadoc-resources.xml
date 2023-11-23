@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<javadocOptions>
+  <tags>
+    <tag>
+      <name>HTTP</name>
+      <head>Enunciate HTTP:</head>
+    </tag>
+    <tag>
+      <name>HTTPWarning</name>
+      <head>Enunciate HTTPWarning:</head>
+    </tag>
+    <tag>
+      <name>returnWrapped</name>
+      <head>Enunciate returnWrapped:</head>
+    </tag>
+    <tag>
+      <name>inputWrapped</name>
+      <head>Enunciate inputWrapped:</head>
+    </tag>
+    <tag>
+      <name>RequestHeader</name>
+      <head>Enunciate RequestHeader:</head>
+    </tag>
+    <tag>
+      <name>ResponseHeader</name>
+      <head>Enunciate ResponseHeader:</head>
+    </tag>
+    <tag>
+      <name>label</name>
+      <head>Enunciate label:</head>
+    </tag>
+    <tag>
+      <name>documentationExample</name>
+      <head>Enunciate documentationExample:</head>
+    </tag>
+    <tag>
+      <name>documentationType</name>
+      <head>Enunciate documentationType:</head>
+    </tag>
+    <tag>
+      <name>style</name>
+      <head>Enunciate style:</head>
+    </tag>
+    <tag>
+      <name>responseExample</name>
+      <head>Enunciate responseExample:</head>
+    </tag>
+    <tag>
+      <name>requestExample</name>
+      <head>Enunciate requestExample:</head>
+    </tag>
+    <tag>
+      <name>pathExample</name>
+      <head>Enunciate pathExample:</head>
+    </tag>
+    <tag>
+      <name>readonly</name>
+      <head>Enunciate readonly:</head>
+    </tag>
+    <tag>
+      <name>ignore</name>
+      <head>Enunciate ignore:</head>
+    </tag>
+  </tags>
+  <docletArtifacts>
+    <docletArtifact />
+  </docletArtifacts>
+  <tagletArtifacts>
+    <tagletArtifact />
+  </tagletArtifacts>
+  <javadocResourcesDirectory>src/main/javadoc</javadocResourcesDirectory>
+</javadocOptions>

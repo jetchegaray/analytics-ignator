@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Ignite.scala</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Spark::Ignitor</a> &gt; <a href="index.source.html" class="el_package">com.sirsidynix.bc.analytics.ignitor</a> &gt; <span class="el_source">Ignite.scala</span></div><h1>Ignite.scala</h1><pre class="source lang-java linenums">/*
+* Copyright 2018 Sirsi Corporation. All rights reserved.
+*/
+package com.sirsidynix.bc.analytics.ignitor
+
+import java.net.URI
+import java.util.stream.Collector
+
+import com.google.common.collect.Lists
+import org.apache.hadoop.yarn.api.ApplicationConstants
+import org.apache.hadoop.yarn.api.records._
+import org.apache.hadoop.yarn.client.api.YarnClient
+import org.apache.hadoop.yarn.util.Records
+import collection.JavaConversions._
+import scala.collection.JavaConverters._
+
+<span class="nc" id="L17">class Ignite(resourceManagerUri: URI) {</span>
+
+<span class="nc bnc" id="L19" title="All 4 branches missed.">  private lazy val yc = {</span>
+<span class="nc" id="L20">    val yc = YarnClient.createYarnClient()</span>
+<span class="nc" id="L21">    yc.init(ConfParser.fetchHadoopConf(resourceManagerUri.toString))</span>
+<span class="nc" id="L22">    yc.start()</span>
+<span class="nc" id="L23">    yc</span>
+  }
+
+  /**
+    * passthrough for the ignitor call with default memory allocation
+    * --driver-memory and --conf I hardcoded here because It will be use just for a while. The code that use this will be migrate to fury
+    *
+    * @param opts the options object that defines configurations for the spark job execution
+    * @return the application id of the ignitor job
+    */
+  def ignite(opts: Options): String = {
+<span class="nc" id="L34">    ignite(opts, 16)</span>
+  }
+
+  /**
+    * sends a small job that runs spark submit to get it to run on the spark server
+    *
+    * @param opts the options object that defines configurations for the spark job execution
+    * @param mem  the amount of memory the ignitor should use for submitting the job (generally bigger uberjar = more memory)
+    * @return the application id of the ignitor job
+    */
+  def ignite(opts: Options, mem: Int): String = {
+
+<span class="nc" id="L46">    val app = yc.createApplication()</span>
+<span class="nc" id="L47">    val availableResources = app.getNewApplicationResponse.getMaximumResourceCapability</span>
+<span class="nc" id="L48">    println( s&quot;&quot;&quot;\n\tMem:${availableResources.getMemory}\n\tVirtualCores:${availableResources.getVirtualCores}\n&quot;&quot;&quot;)</span>
+
+<span class="nc" id="L50">    val appContext = app.getApplicationSubmissionContext</span>
+<span class="nc" id="L51">    appContext.setApplicationName(opts.appName)</span>
+<span class="nc" id="L52">    appContext.setQueue(&quot;default&quot;)</span>
+<span class="nc" id="L53">    appContext.setResource(Resource.newInstance(mem, 1))</span>
+<span class="nc" id="L54">    appContext.setAMContainerSpec(makeContainer(opts))</span>
+<span class="nc" id="L55">    appContext.setApplicationType(&quot;IGNITOR&quot;)</span>
+<span class="nc" id="L56">    appContext.setApplicationTags(Set(&quot;IGNITOR&quot;).asJava)</span>
+<span class="nc" id="L57">    appContext.setMaxAppAttempts(1)</span>
+
+<span class="nc" id="L59">    yc.submitApplication(appContext)</span>
+    //perhaps return this? But it will be mostly useless. A short lived application that will merely execute the command spark-submit
+<span class="nc" id="L61">    appContext.getApplicationId.toString</span>
+  }
+
+  private def makeContainer(opts: Options) = {
+
+<span class="nc" id="L66">    val master = &quot;yarn-cluster&quot;</span>
+<span class="nc" id="L67">    val appName = s&quot;${opts.appName}:${opts.className}&quot;</span>
+
+<span class="nc" id="L69">    val command = Seq(s&quot;spark-submit -v&quot;,</span>
+<span class="nc" id="L70">      s&quot;--executor-cores ${opts.coresPerExecutor}&quot;,</span>
+<span class="nc" id="L71">      s&quot;--num-executors ${opts.numExecutors}&quot;,</span>
+<span class="nc" id="L72">      s&quot;--executor-memory ${opts.execMem}&quot;,</span>
+<span class="nc" id="L73">      s&quot;--queue ${opts.queue}&quot;,</span>
+<span class="nc" id="L74">      s&quot;--master $master&quot;,</span>
+<span class="nc" id="L75">      s&quot;--class ${opts.className}&quot;,</span>
+<span class="nc" id="L76">      s&quot;&quot;&quot;--name &quot;$appName&quot;&quot;&quot;&quot;,</span>
+<span class="nc" id="L77">      s&quot;--driver-memory 1g&quot;,</span>
+<span class="nc" id="L78">      &quot;--driver-java-options '-XX:MaxPermSize=1024m -XX:PermSize=256m'&quot;,</span>
+<span class="nc" id="L79">      s&quot;${opts.jar}&quot;,</span>
+<span class="nc" id="L80">      s&quot;${opts.args}&quot;,</span>
+<span class="nc" id="L81">      s&quot;1&gt;${ApplicationConstants.LOG_DIR_EXPANSION_VAR}/stdout&quot;,</span>
+<span class="nc" id="L82">      s&quot;2&gt;${ApplicationConstants.LOG_DIR_EXPANSION_VAR}/stderr&quot;</span>
+<span class="nc" id="L83">    ).mkString(&quot; &quot;)</span>
+
+<span class="nc" id="L85">    val container = Records.newRecord(classOf[ContainerLaunchContext])</span>
+<span class="nc" id="L86">    container.setCommands(List(command).asJava)</span>
+<span class="nc" id="L87">    println(s&quot;${container.getCommands}&quot;)</span>
+<span class="nc" id="L88">    container</span>
+  }
+
+
+  /**
+    * Kill all the Ignitor process.
+    *
+    */
+  def killThemAll() {
+
+<span class="nc bnc" id="L98" title="All 2 branches missed.">    val queueInfo = yc.getAllQueues().find(_.getQueueName() eq &quot;default&quot;)</span>
+<span class="nc" id="L99">    println(s&quot;${queueInfo}&quot;)</span>
+<span class="nc" id="L100">    val applications = queueInfo.get.getApplications.filter(</span>
+<span class="nc bnc" id="L101" title="All 12 branches missed.">      app =&gt; (app.getApplicationType == &quot;IGNITOR&quot; &amp;&amp;  (app.getYarnApplicationState == YarnApplicationState.ACCEPTED) ||</span>
+<span class="nc bnc" id="L102" title="All 6 branches missed.">        app.getYarnApplicationState == YarnApplicationState.RUNNING))</span>
+<span class="nc" id="L103">    println(s&quot;${applications}&quot;)</span>
+
+<span class="nc bnc" id="L105" title="All 2 branches missed.">    applications.foreach{ app =&gt; yc.killApplication(app.getApplicationId)}</span>
+
+  }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

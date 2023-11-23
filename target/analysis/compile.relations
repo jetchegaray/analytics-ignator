@@ -1,0 +1,40 @@
+products:
+   src/main/scala/com/sirsidynix/bc/analytics/ignitor/ConfParser.scala -> target/classes/com/sirsidynix/bc/analytics/ignitor/ConfParser$$anonfun$convertToHadoopConf$1.class
+   src/main/scala/com/sirsidynix/bc/analytics/ignitor/ConfParser.scala -> target/classes/com/sirsidynix/bc/analytics/ignitor/ConfParser$$anonfun$getHadoopConfFromLocalXml$1.class
+   src/main/scala/com/sirsidynix/bc/analytics/ignitor/ConfParser.scala -> target/classes/com/sirsidynix/bc/analytics/ignitor/ConfParser$$anonfun$parseConfXmlToMap$1.class
+   src/main/scala/com/sirsidynix/bc/analytics/ignitor/ConfParser.scala -> target/classes/com/sirsidynix/bc/analytics/ignitor/ConfParser$.class
+   src/main/scala/com/sirsidynix/bc/analytics/ignitor/ConfParser.scala -> target/classes/com/sirsidynix/bc/analytics/ignitor/ConfParser.class
+   src/main/scala/com/sirsidynix/bc/analytics/ignitor/Ignite.scala -> target/classes/com/sirsidynix/bc/analytics/ignitor/Ignite$$anonfun$1.class
+   src/main/scala/com/sirsidynix/bc/analytics/ignitor/Ignite.scala -> target/classes/com/sirsidynix/bc/analytics/ignitor/Ignite$$anonfun$2.class
+   src/main/scala/com/sirsidynix/bc/analytics/ignitor/Ignite.scala -> target/classes/com/sirsidynix/bc/analytics/ignitor/Ignite$$anonfun$killThemAll$1.class
+   src/main/scala/com/sirsidynix/bc/analytics/ignitor/Ignite.scala -> target/classes/com/sirsidynix/bc/analytics/ignitor/Ignite.class
+   src/main/scala/com/sirsidynix/bc/analytics/ignitor/Options.scala -> target/classes/com/sirsidynix/bc/analytics/ignitor/Options$.class
+   src/main/scala/com/sirsidynix/bc/analytics/ignitor/Options.scala -> target/classes/com/sirsidynix/bc/analytics/ignitor/Options.class
+binary dependencies:
+   src/main/scala/com/sirsidynix/bc/analytics/ignitor/ConfParser.scala -> /home/javier/.m2/repository/org/apache/hadoop/hadoop-common/2.5.0-cdh5.2.0/hadoop-common-2.5.0-cdh5.2.0.jar
+   src/main/scala/com/sirsidynix/bc/analytics/ignitor/ConfParser.scala -> /home/javier/.m2/repository/org/scala-lang/scala-library/2.10.4/scala-library-2.10.4.jar
+   src/main/scala/com/sirsidynix/bc/analytics/ignitor/ConfParser.scala -> /home/javier/.m2/repository/org/scalaj/scalaj-http_2.10/0.3.16/scalaj-http_2.10-0.3.16.jar
+   src/main/scala/com/sirsidynix/bc/analytics/ignitor/ConfParser.scala -> /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar
+   src/main/scala/com/sirsidynix/bc/analytics/ignitor/Ignite.scala -> /home/javier/.m2/repository/org/apache/hadoop/hadoop-common/2.5.0-cdh5.2.0/hadoop-common-2.5.0-cdh5.2.0.jar
+   src/main/scala/com/sirsidynix/bc/analytics/ignitor/Ignite.scala -> /home/javier/.m2/repository/org/apache/hadoop/hadoop-yarn-api/2.5.0-cdh5.2.0/hadoop-yarn-api-2.5.0-cdh5.2.0.jar
+   src/main/scala/com/sirsidynix/bc/analytics/ignitor/Ignite.scala -> /home/javier/.m2/repository/org/apache/hadoop/hadoop-yarn-client/2.5.0-cdh5.2.0/hadoop-yarn-client-2.5.0-cdh5.2.0.jar
+   src/main/scala/com/sirsidynix/bc/analytics/ignitor/Ignite.scala -> /home/javier/.m2/repository/org/scala-lang/scala-library/2.10.4/scala-library-2.10.4.jar
+   src/main/scala/com/sirsidynix/bc/analytics/ignitor/Ignite.scala -> /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar
+   src/main/scala/com/sirsidynix/bc/analytics/ignitor/Options.scala -> /home/javier/.m2/repository/org/scala-lang/scala-library/2.10.4/scala-library-2.10.4.jar
+   src/main/scala/com/sirsidynix/bc/analytics/ignitor/Options.scala -> /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar
+source dependencies:
+   src/main/scala/com/sirsidynix/bc/analytics/ignitor/Ignite.scala -> src/main/scala/com/sirsidynix/bc/analytics/ignitor/ConfParser.scala
+   src/main/scala/com/sirsidynix/bc/analytics/ignitor/Ignite.scala -> src/main/scala/com/sirsidynix/bc/analytics/ignitor/Options.scala
+external dependencies:
+class names:
+   src/main/scala/com/sirsidynix/bc/analytics/ignitor/ConfParser.scala -> com.sirsidynix.bc.analytics.ignitor.ConfParser
+   src/main/scala/com/sirsidynix/bc/analytics/ignitor/ConfParser.scala -> com.sirsidynix.bc.analytics.ignitor.ConfParser$
+   src/main/scala/com/sirsidynix/bc/analytics/ignitor/ConfParser.scala -> com.sirsidynix.bc.analytics.ignitor.ConfParser$$anonfun$convertToHadoopConf$1
+   src/main/scala/com/sirsidynix/bc/analytics/ignitor/ConfParser.scala -> com.sirsidynix.bc.analytics.ignitor.ConfParser$$anonfun$getHadoopConfFromLocalXml$1
+   src/main/scala/com/sirsidynix/bc/analytics/ignitor/ConfParser.scala -> com.sirsidynix.bc.analytics.ignitor.ConfParser$$anonfun$parseConfXmlToMap$1
+   src/main/scala/com/sirsidynix/bc/analytics/ignitor/Ignite.scala -> com.sirsidynix.bc.analytics.ignitor.Ignite
+   src/main/scala/com/sirsidynix/bc/analytics/ignitor/Ignite.scala -> com.sirsidynix.bc.analytics.ignitor.Ignite$$anonfun$1
+   src/main/scala/com/sirsidynix/bc/analytics/ignitor/Ignite.scala -> com.sirsidynix.bc.analytics.ignitor.Ignite$$anonfun$2
+   src/main/scala/com/sirsidynix/bc/analytics/ignitor/Ignite.scala -> com.sirsidynix.bc.analytics.ignitor.Ignite$$anonfun$killThemAll$1
+   src/main/scala/com/sirsidynix/bc/analytics/ignitor/Options.scala -> com.sirsidynix.bc.analytics.ignitor.Options
+   src/main/scala/com/sirsidynix/bc/analytics/ignitor/Options.scala -> com.sirsidynix.bc.analytics.ignitor.Options$
